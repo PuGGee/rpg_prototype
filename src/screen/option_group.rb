@@ -26,7 +26,7 @@ module Screen
         input = gets.chomp
         if options.map(&:to_s).include?(input)
           if GLOBAL_OPTIONS.include?(input.to_sym)
-            Update.show(Global.send(input))
+            Global.send(input)
             Update.show(text)
           else
             return input
