@@ -1,5 +1,5 @@
 module Screen
-  class Event < Element
+  class Update
 
     def self.show(text)
       new(text).render
@@ -13,15 +13,15 @@ module Screen
 
     def render
       puts "*#{centre('-')}*"
-      puts "*#{centre(' ')}*"
+      puts "|#{centre(' ')}|"
       if text.is_a?(Array)
         text.each do |line|
-          puts "*#{centre(line, ' ')}*"
+          puts "|#{centre(line, ' ')}|"
         end
       else
-        puts "*#{centre(text, ' ')}*"
+        puts "|#{centre(text, ' ')}|"
       end
-      puts "*#{centre(' ')}*"
+      puts "|#{centre(' ')}|"
       puts "*#{centre('-')}*"
     end
 

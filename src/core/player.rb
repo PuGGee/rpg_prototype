@@ -22,5 +22,16 @@ module Core
     def take_damage(amount)
       @health -= amount
     end
+
+    def stats
+      [
+        "Health: #{health}/#{max_health}",
+        "Combat modifier: #{combat_modifier}"
+      ]
+    end
+
+    def items
+      @items ||= []
+    end
   end
 end

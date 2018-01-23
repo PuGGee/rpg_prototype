@@ -2,7 +2,7 @@ module Core
   class Display
 
     def self.show_card(card)
-      Screen::Executor.new(card).start
+      card.start
     end
   end
 end

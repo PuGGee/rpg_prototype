@@ -6,7 +6,7 @@ module Card
     end
 
     def combat_value
-      7
+      @combat_value ||= [7, 8, 9].sample
     end
   end
 end
