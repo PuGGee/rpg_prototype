@@ -1,6 +1,9 @@
 require_relative 'card/base'
 require_relative 'card/fight'
 require_relative 'card/goblin'
+require_relative 'card/item'
+
+require_relative 'card/items/sword'
 
 require_relative 'core/cards'
 require_relative 'core/display'
