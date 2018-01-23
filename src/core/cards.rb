@@ -2,7 +2,7 @@ module Core
   class Cards
 
     def self.generate
-      @instance = new(10.times.map { Card::Goblin.new })
+      @instance = new(10.times.map { Card::Goblin.new(Player.get) })
     end
 
     def self.draw

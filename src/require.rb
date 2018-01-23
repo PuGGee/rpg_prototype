@@ -9,3 +9,4 @@ require_relative 'core/runner'
 
 require_relative 'screen/element'
 require_relative 'screen/event'
+require_relative 'screen/executor'
