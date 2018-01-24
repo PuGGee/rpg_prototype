@@ -14,6 +14,7 @@ module Card
       [
         opening_text,
         '',
+        "Combat value: #{combat_value}",
         "-1 -> -2    #{first_penalty_text}",
         "-3 -> -5    #{second_penalty_text}",
         "-6 and down #{third_penalty_text}",
@@ -26,8 +27,14 @@ module Card
     end
 
     def fight
-      roll = rand(5) + rand(5) + 2
       required_roll = combat_value - player.combat_modifier
+      Screen::Update.show([
+        "Combat value: #{combat_value}",
+        "You needed to roll #{required_roll}"
+      ])
+      gets
+
+      roll = rand(5) + rand(5) + 2
       fail_amount = roll - required_roll
       if fail_amount <= -6
         inflict_third_penalty
@@ -42,9 +49,6 @@ module Card
         success_fail_text = 'Well done!'
       end
       Screen::Update.show([
-        "Combat value: #{combat_value}",
-        "You needed to roll #{required_roll}",
-        "",
         "You rolled #{roll}",
         success_fail_text
       ])

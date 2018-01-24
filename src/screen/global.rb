@@ -7,6 +7,7 @@ module Screen
 
     def self.equip
       items = Core::Player.get.equipable_items
+      return Update.show('You have nothing to equip') unless items.any?
       selected_item_name = OptionGroup.new(items.map(&:name), true).select_option
       selected_item = Core::Player.get.items.detect { |item| item.name == selected_item_name }
       Core::Player.get.equip_item(selected_item)
