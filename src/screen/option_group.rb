@@ -1,16 +1,17 @@
 module Screen
   class OptionGroup
 
-    GLOBAL_OPTIONS = [:stats]
+    GLOBAL_OPTIONS = [:stats, :equip]
 
     attr :result
 
-    def initialize(options)
+    def initialize(options, exclude_globals = false)
       @options = options
+      @exclude_globals = exclude_globals
     end
 
     def options
-      GLOBAL_OPTIONS + @options
+      (@exclude_globals ? [] : GLOBAL_OPTIONS) + @options
     end
 
     def text

@@ -14,6 +14,10 @@ module Card
       0
     end
 
+    def name
+      'item'
+    end
+
     def weapon?
       false
     end

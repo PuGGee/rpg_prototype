@@ -2,6 +2,10 @@ module Card
   module Items
     class Sword < Item
 
+      def name
+        'sword'
+      end
+
       def opening_text
         'You found a sword'
       end
