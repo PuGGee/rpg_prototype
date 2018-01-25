@@ -62,6 +62,22 @@ module Core
       talent == talent_name
     end
 
+    def get_item(item_name)
+      items.detect { |item| item.name.to_s == item_name.to_s }.tap do |item|
+        raise "#{item_name} cannot be found" unless item
+      end
+    end
+
+    def has_item?(item_name)
+      !!get_item
+    end
+
+    def use_combat_item(item_name, player)
+      item = get_item(item_name)
+      raise ArgumentError.new("#{item_name} is not a combat item") unless item.combat_item?
+      item.do_combat_action(player)
+    end
+
     def dead?
       health <= 0
     end

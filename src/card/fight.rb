@@ -22,8 +22,27 @@ module Card
     end
 
     def choose_action
-      option_group = Screen::OptionGroup.new([Screen::Global::Actions.stats, :fight])
-      result = option_group.select_option
+      option_group = Screen::OptionGroup.new([Screen::Global::Actions.stats, :fight, :use])
+      loop do
+        option = option_group.select_option
+        if option == :fight
+          break
+        elsif option == :use
+          use_item
+        end
+      end
+    end
+
+    def use_item
+      option_group = Screen::OptionGroup.new([*player.combat_items.map(&:name), :back])
+      loop do
+        option = option_group.select_option
+        if option == :back
+          break
+        else
+          player = player.use_combat_item(option, player)
+        end
+      end
     end
 
     def fight

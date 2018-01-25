@@ -26,8 +26,14 @@ module Card
       false
     end
 
+    def do_combat_effect(player)
+    end
+
     def non_combat_item?
       false
+    end
+
+    def do_non_combat_effect(player)
     end
   end
 end
