@@ -1,8 +1,14 @@
 module Core
   class Player
 
+    TALENTS = [
+      :eagle_eyed,
+      :buff,
+      :agile
+    ]
+
     def self.create
-      @instance = new(10, 0)
+      @instance = new(10, nil)
     end
 
     def self.get
@@ -11,12 +17,12 @@ module Core
 
     private_class_method :new
 
-    attr :max_health, :health, :weapon
+    attr :max_health, :health, :weapon, :talent
 
-    def initialize(max_health, combat_modifier)
+    def initialize(max_health, talent)
       @max_health = max_health
       @health = max_health
-      @combat_modifier = combat_modifier
+      @talent = talent
     end
 
     def take_damage(amount)
@@ -49,7 +55,15 @@ module Core
     end
 
     def combat_modifier
-      @combat_modifier + [weapon, *combat_items].compact.map(&:combat_value).inject(0, &:+)
+      [weapon, *combat_items].compact.map(&:combat_value).inject(0, &:+)
+    end
+
+    def has_talent?(talent_name)
+      talent == talent_name
+    end
+
+    def dead?
+      health <= 0
     end
   end
 end

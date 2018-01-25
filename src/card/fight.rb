@@ -22,7 +22,7 @@ module Card
     end
 
     def choose_action
-      option_group = Screen::OptionGroup.new([:fight])
+      option_group = Screen::OptionGroup.new([Screen::Global::Actions.stats, :fight])
       result = option_group.select_option
     end
 

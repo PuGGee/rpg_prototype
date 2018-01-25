@@ -3,15 +3,10 @@ module Screen
 
     GLOBAL_OPTIONS = [:stats, :equip]
 
-    attr :result
+    attr :result, :options
 
-    def initialize(options, exclude_globals = false)
+    def initialize(options)
       @options = options
-      @exclude_globals = exclude_globals
-    end
-
-    def options
-      (@exclude_globals ? [] : GLOBAL_OPTIONS) + @options
     end
 
     def text
