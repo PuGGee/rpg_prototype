@@ -12,16 +12,21 @@ module Screen
       end
     end
 
-    def self.stats
-      Update.show(Core::Player.get.stats)
+    def self.stats(player)
+      Update.show([
+        "Health: #{player.health}/#{player.max_health}",
+        "Combat modifier: #{player.combat_modifier}"
+      ].tap do |lines|
+        lines << "Equipped weapon: #{player.weapon.name}" if player.weapon
+      end)
     end
 
-    def self.equip
-      items = Core::Player.get.equipable_items
+    def self.equip(player)
+      items = player.equipable_items
       return Update.show('You have nothing to equip') unless items.any?
-      selected_item_name = OptionGroup.new(items.map(&:name)).select_option
-      selected_item = Core::Player.get.items.detect { |item| item.name == selected_item_name }
-      Core::Player.get.equip_item(selected_item)
+      selected_item_name = OptionGroup.new(player, items.map(&:name)).select_option
+      selected_item = player.items.detect { |item| item.name == selected_item_name }
+      player.equip_item(selected_item)
       Update.show("You have equipped #{selected_item_name}")
     end
   end

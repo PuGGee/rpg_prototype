@@ -14,8 +14,16 @@ module Core
       @combat_modifier_mod += value
     end
 
-    def combat_value
+    def combat_modifier
       player.combat_modifier + @combat_modifier_mod
+    end
+
+    def use_combat_item(item_name)
+      item = get_item(item_name)
+      raise ArgumentError.new("#{item_name} is not a combat item") unless item.combat_item?
+      result = item.do_combat_action(self)
+      player.remove_item(item) if item.used_up?
+      result
     end
   end
 end

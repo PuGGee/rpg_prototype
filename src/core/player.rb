@@ -29,17 +29,16 @@ module Core
       @health -= amount
     end
 
-    def stats
-      [
-        "Health: #{health}/#{max_health}",
-        "Combat modifier: #{combat_modifier}"
-      ].tap do |lines|
-        lines << "Equipped weapon: #{weapon.name}" if weapon
-      end
-    end
-
     def items
       @items ||= []
+    end
+
+    def take_item(item)
+      items << item
+    end
+
+    def remove_item(item)
+      items.delete(item)
     end
 
     def equipable_items
@@ -70,12 +69,6 @@ module Core
 
     def has_item?(item_name)
       !!get_item
-    end
-
-    def use_combat_item(item_name, player)
-      item = get_item(item_name)
-      raise ArgumentError.new("#{item_name} is not a combat item") unless item.combat_item?
-      item.do_combat_action(player)
     end
 
     def dead?

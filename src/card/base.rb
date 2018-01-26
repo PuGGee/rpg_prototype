@@ -4,7 +4,7 @@ module Card
     attr :player
 
     def initialize(player)
-      @player = player
+      @player = Core::PlayerMod.new(player)
     end
 
     def start

@@ -3,9 +3,10 @@ module Screen
 
     GLOBAL_OPTIONS = [:stats, :equip]
 
-    attr :result, :options
+    attr :options, :player
 
-    def initialize(options)
+    def initialize(player, options)
+      @player = player
       @options = options
     end
 
@@ -22,10 +23,10 @@ module Screen
         input = gets.chomp
         if options.map(&:to_s).include?(input)
           if GLOBAL_OPTIONS.include?(input.to_sym)
-            Global.send(input)
+            Global.send(input, player)
             Update.show(text)
           else
-            return input
+            return input.to_sym
           end
         else
           Update.show([

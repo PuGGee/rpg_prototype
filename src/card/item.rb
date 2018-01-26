@@ -3,7 +3,7 @@ module Card
 
     def start
       Screen::Update.show(opening_text)
-      player.items << self
+      player.take_item(self)
     end
 
     def opening_text
@@ -22,18 +22,30 @@ module Card
       false
     end
 
+    def ranged_weapon?
+      false
+    end
+
+    def ranged_combat_modifier
+      0
+    end
+
     def combat_item?
       false
     end
 
-    def do_combat_effect(player)
+    def do_combat_action(player)
     end
 
     def non_combat_item?
       false
     end
 
-    def do_non_combat_effect(player)
+    def do_non_combat_action(player)
+    end
+
+    def used_up?
+      false
     end
   end
 end
