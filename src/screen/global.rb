@@ -7,6 +7,10 @@ module Screen
         :stats
       end
 
+      def self.items
+        :items
+      end
+
       def self.equip
         :equip
       end
@@ -19,6 +23,14 @@ module Screen
       ].tap do |lines|
         lines << "Equipped weapon: #{player.weapon.name}" if player.weapon
       end)
+    end
+
+    def self.items(player)
+      if player.items.any?
+        Update.show(player.items.map { |item| "#{item.name}: #{item.description}" })
+      else
+        Update.show('You have no items')
+      end
     end
 
     def self.equip(player)

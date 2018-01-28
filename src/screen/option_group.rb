@@ -1,7 +1,7 @@
 module Screen
   class OptionGroup
 
-    GLOBAL_OPTIONS = [:stats, :equip]
+    GLOBAL_OPTIONS = [:stats, :items, :equip]
 
     attr :options, :player
 

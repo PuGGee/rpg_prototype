@@ -10,6 +10,10 @@ module Card
       "You found an item"
     end
 
+    def description
+      'Does nothing'
+    end
+
     def combat_value
       0
     end

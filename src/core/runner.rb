@@ -12,7 +12,7 @@ module Core
 
     def start_game
       Player.create
-      Player.get.take_item(Card::Items::Bow.new(Player.get))
+      Player.get.take_item(Card::Items::FurySpell.new(Player.get))
       Cards.generate
 
       main_loop
@@ -24,6 +24,7 @@ module Core
       loop do
         card = Cards.draw
         Display.show_card(card)
+        Player.get.end_turn
       end
     end
   end

@@ -24,7 +24,7 @@ module Card
     end
 
     def choose_action
-      option_group = Screen::OptionGroup.new(player, [Screen::Global::Actions.stats, :fight, :use])
+      option_group = Screen::OptionGroup.new(player, [Screen::Global::Actions.stats, Screen::Global::Actions.items, :fight, :use])
       loop do
         option = option_group.select_option
         if option == :fight

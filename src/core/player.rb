@@ -29,8 +29,18 @@ module Core
       @health -= amount
     end
 
+    def end_turn
+      effects.dup.each do |effect|
+        effects.delete(effect) if effect.run_out?
+      end
+    end
+
     def items
       @items ||= []
+    end
+
+    def effects
+      @effects ||= []
     end
 
     def take_item(item)
@@ -39,6 +49,10 @@ module Core
 
     def remove_item(item)
       items.delete(item)
+    end
+
+    def add_effect(effect)
+      effects << effect
     end
 
     def equipable_items
@@ -54,7 +68,7 @@ module Core
     end
 
     def combat_modifier
-      [weapon, *combat_items].compact.map(&:combat_value).inject(0, &:+)
+      [weapon, *combat_items, *effects].compact.map(&:combat_value).inject(0, &:+)
     end
 
     def has_talent?(talent_name)

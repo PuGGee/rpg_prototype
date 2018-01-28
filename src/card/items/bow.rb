@@ -10,6 +10,10 @@ module Card
         'bow'
       end
 
+      def description
+        'Can kill a monster without risking harm. Combat roll -3'
+      end
+
       def combat_item?
         true
       end

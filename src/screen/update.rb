@@ -23,6 +23,7 @@ module Screen
       end
       puts "|#{centre(' ')}|"
       puts "*#{centre('-')}*"
+      sleep 0.5
     end
 
     private

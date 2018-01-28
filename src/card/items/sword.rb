@@ -10,6 +10,10 @@ module Card
         'You found a sword'
       end
 
+      def description
+        '+2 to combat roll when equipped'
+      end
+
       def weapon?
         true
       end

@@ -11,6 +11,10 @@ module Card
         'combatpotion'
       end
 
+      def description
+        'Single use, gives +1 to combat roll for current combat'
+      end
+
       def combat_item?
         true
       end
