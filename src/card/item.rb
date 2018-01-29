@@ -18,6 +18,10 @@ module Card
       0
     end
 
+    def agility_modifier
+      0
+    end
+
     def name
       'item'
     end

@@ -12,7 +12,6 @@ module Core
 
     def start_game
       Player.create
-      Player.get.take_item(Card::Items::FurySpell.new(Player.get))
       Cards.generate
 
       main_loop

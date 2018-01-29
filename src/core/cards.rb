@@ -2,7 +2,12 @@ module Core
   class Cards
 
     def self.generate
-      @instance = new(10.times.map { Card::Goblin.new(Player.get) })
+      cards_array = [
+        *10.times.map { Card::Goblin.new(Player.get) },
+        *4.times.map { Card::PitTrap.new(Player.get) },
+        Card::Items::SmokeBomb.new(Player.get),
+      ].shuffle
+      @instance = new(cards_array)
     end
 
     def self.draw
@@ -10,7 +15,7 @@ module Core
     end
 
     def self.reshuffle(card)
-      cards.insert(rand(cards.length + 1), card)
+      @instance.cards.insert(rand(@instance.cards.length + 1), card)
     end
 
     attr :cards
