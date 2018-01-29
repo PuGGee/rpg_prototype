@@ -9,6 +9,10 @@ module Core
       @instance.draw
     end
 
+    def self.reshuffle(card)
+      cards.insert(rand(cards.length + 1), card)
+    end
+
     attr :cards
 
     def initialize(cards)
