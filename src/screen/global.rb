@@ -19,7 +19,8 @@ module Screen
     def self.stats(player)
       Update.show([
         "Health: #{player.health}/#{player.max_health}",
-        "Combat modifier: #{player.combat_modifier}"
+        "Talent: #{player.talent}",
+        "Combat modifier: #{player.combat_modifier}",
       ].tap do |lines|
         lines << "Equipped weapon: #{player.weapon.name}" if player.weapon
       end)

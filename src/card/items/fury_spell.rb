@@ -7,6 +7,10 @@ module Card
         'fury'
       end
 
+      def opening_text
+        "You found a spell: Fury!"
+      end
+
       def description
         "(spell) #{good_effect_text} or #{bad_effect_text}"
       end

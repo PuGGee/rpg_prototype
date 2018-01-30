@@ -8,7 +8,7 @@ module Core
     ]
 
     def self.create
-      @instance = new(10, nil)
+      @instance = new(10, TALENTS.sample)
     end
 
     def self.get
@@ -26,6 +26,7 @@ module Core
     end
 
     def take_damage(amount)
+      amount -= 1 if has_special?(:shielded) && rand(2).odd?
       @health -= amount
     end
 
@@ -49,6 +50,12 @@ module Core
 
     def remove_item(item)
       items.delete(item)
+    end
+
+    def remove_random_item
+      random_item = items.sample
+      remove_item(random_item)
+      Screen::Update.show("You lose your #{random_item.name}")
     end
 
     def add_effect(effect)
@@ -81,6 +88,10 @@ module Core
 
     def has_talent?(talent_name)
       talent == talent_name
+    end
+
+    def has_special?(special)
+      items.flat_map(&:special).include?(special)
     end
 
     def get_item(item_name)

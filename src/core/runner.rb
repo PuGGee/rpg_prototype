@@ -12,6 +12,7 @@ module Core
 
     def start_game
       Player.create
+      Player.get.take_item(Card::Items::Shield.new(Player.get))
       Cards.generate
 
       main_loop

@@ -1,6 +1,7 @@
 module Card
   module Items
     class Bow < Item
+      prepend MultipleUse.uses(6)
 
       def opening_text
         "You found a bow"
@@ -11,7 +12,7 @@ module Card
       end
 
       def description
-        'Can kill a monster without risking harm. Combat roll -3'
+        'Can kill a monster without risking harm. Combat roll -1'
       end
 
       def combat_item?
@@ -23,7 +24,7 @@ module Card
       end
 
       def ranged_combat_modifier
-        -3
+        -1
       end
     end
   end

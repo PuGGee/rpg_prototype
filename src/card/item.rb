@@ -55,5 +55,9 @@ module Card
     def used_up?
       false
     end
+
+    def special
+      []
+    end
   end
 end

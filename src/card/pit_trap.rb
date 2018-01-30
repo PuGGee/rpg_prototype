@@ -1,25 +1,8 @@
 module Card
-  class PitTrap < Base
+  class PitTrap < Trap
 
     def opening_text
       "You encounter a pit trap!"
-    end
-
-    def start
-      required_roll = difficulty_value - player.agility_modifier
-      Screen::Update.show([
-        "Difficulty: #{difficulty_value}",
-        "You need to roll #{required_roll}"
-      ])
-      gets
-
-      roll = rand(5) + rand(5) + 2
-      fail_amount = roll - required_roll
-      inflict_penalty if fail_amount < 0
-      Screen::Update.show([
-        "You rolled #{roll}",
-        *(fail_amount < 0 ? penalty_text : success_text)
-      ])
     end
 
     private

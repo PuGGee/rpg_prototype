@@ -1,14 +1,14 @@
 module Card
   module Items
-    class CombatPotion < Item
+    class FocusPotion < Item
       prepend SingleUse
 
       def opening_text
-        "You found a combat potion"
+        "You found a focus potion"
       end
 
       def name
-        'combatpotion'
+        'focuspotion'
       end
 
       def description

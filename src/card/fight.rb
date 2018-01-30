@@ -24,7 +24,7 @@ module Card
     end
 
     def choose_action
-      option_group = Screen::OptionGroup.new(player, [Screen::Global::Actions.stats, Screen::Global::Actions.items, :fight, :use])
+      option_group = Screen::OptionGroup.new(player, [Screen::Global::Actions.stats, Screen::Global::Actions.items, :fight, :use], :fight)
       loop do
         option = option_group.select_option
         if option == :fight
@@ -36,7 +36,7 @@ module Card
     end
 
     def use_item
-      option_group = Screen::OptionGroup.new(player, [*player.combat_items.map(&:name), :back])
+      option_group = Screen::OptionGroup.new(player, [*player.combat_items.map(&:name), :back], :back)
       option = option_group.select_option
       unless option == :back
         item = player.get_item(option)
@@ -51,6 +51,7 @@ module Card
     def use_ranged_weapon(ranged_weapon)
       required_roll = combat_value - (player.combat_modifier + ranged_weapon.ranged_combat_modifier)
       required_roll += player.weapon.combat_value if player.weapon
+      required_roll -= 1 if player.has_talent?(:eagle_eyed)
       Screen::Update.show([
         "Combat value: #{combat_value}",
         "You need to roll #{required_roll}"
@@ -67,7 +68,7 @@ module Card
     end
 
     def fight
-      required_roll = combat_value - player.combat_modifier
+      required_roll = combat_value - player.combat_modifier - (player.has_talent?(:buff) ? 1 : 0)
       Screen::Update.show([
         "Combat value: #{combat_value}",
         "You need to roll #{required_roll}"

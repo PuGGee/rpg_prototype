@@ -5,9 +5,10 @@ module Screen
 
     attr :options, :player
 
-    def initialize(player, options)
+    def initialize(player, options, default_option = nil)
       @player = player
       @options = options
+      @default_option = default_option
     end
 
     def text
@@ -21,6 +22,9 @@ module Screen
       Update.show(text)
       loop do
         input = gets.chomp
+        if input == '' && @default_option
+          return @default_option
+        end
         if options.map(&:to_s).include?(input)
           if GLOBAL_OPTIONS.include?(input.to_sym)
             Global.send(input, player)
