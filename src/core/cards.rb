@@ -13,7 +13,7 @@ module Core
         Card::Items::FocusPotion.new(Player.get),
         Card::Items::Bow.new(Player.get),
       ].shuffle
-      @instance = new(cards_array)
+      @instance = new(cards_array, cards_array.dup, cards_array.dup)
     end
 
     def self.draw
@@ -21,17 +21,30 @@ module Core
     end
 
     def self.reshuffle(card)
-      @instance.cards.insert(rand(@instance.cards.length + 1), card)
+      @instance.current_deck.insert(rand(@instance.current_deck.length + 1), card)
     end
 
-    attr :cards
+    attr :decks
 
-    def initialize(cards)
-      @cards = cards
+    def initialize(first_deck, second_deck, third_deck)
+      @decks = [first_deck, second_deck, third_deck]
+      @current_deck = 0
     end
 
     def draw
-      cards.pop
+      if current_deck.any?
+        current_deck.pop
+      else
+        @current_deck += 1
+        Screen::Update.show([
+          "Deck #{@current_deck} of 3 finished",
+          "Continuing to next deck"
+        ])
+      end
+    end
+
+    def current_deck
+      decks[@current_deck]
     end
   end
 end
