@@ -26,7 +26,10 @@ module Core
     end
 
     def take_damage(amount)
-      amount -= 1 if has_special?(:shielded) && rand(2).odd?
+      if has_special?(:shielded) && rand(2).odd?
+        amount -= 1
+        Screen::Update.show("Your shield blocks 1 damage")
+      end
       @health -= amount
     end
 

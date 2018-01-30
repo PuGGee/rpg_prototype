@@ -2,19 +2,32 @@ module Card
   class Fight < Base
 
     def start
-      catch(:win) do
-        Screen::Update.show(description)
-        choose_action
+      @killed = 0
+      loop do
+        catch(:win) do
+          Screen::Update.show(description)
+          choose_action
 
-        fight
+          fight
+        end
+        @killed += 1
+        break if @killed >= enemy_num
       end
     end
 
     private
 
+    def enemy_num
+      1
+    end
+
+    def current_enemies
+      enemy_num - (@killed || 0)
+    end
+
     def description
       [
-        opening_text,
+        @killed && @killed > 0 ? update_text : opening_text,
         '',
         "Combat value: #{combat_value}",
         "-1 -> -2    #{first_penalty_text}",

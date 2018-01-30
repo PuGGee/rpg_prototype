@@ -22,6 +22,7 @@ module Core
 
     def main_loop
       loop do
+        Display.show_card(Card::GoblinPod.new(Player.get))
         card = Cards.draw
         Display.show_card(card)
         Player.get.end_turn

@@ -6,27 +6,27 @@ module Card
     end
 
     def first_penalty_text
-      'lose 1 health'
+      "lose #{current_enemies} health"
     end
 
     def inflict_first_penalty
-      player.take_damage(1)
+      player.take_damage(current_enemies)
     end
 
     def second_penalty_text
-      'lose 2 health'
+      "lose #{2 * current_enemies} health"
     end
 
     def inflict_second_penalty
-      player.take_damage(2)
+      player.take_damage(2 * current_enemies)
     end
 
     def third_penalty_text
-      'lose 3 health'
+      "lose #{3 * current_enemies} health"
     end
 
     def inflict_third_penalty
-      player.take_damage(3)
+      player.take_damage(3 * current_enemies)
     end
 
     def combat_value
