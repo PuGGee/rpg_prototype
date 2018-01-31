@@ -144,15 +144,17 @@ Player starts with 1 or 2 items. A few other items will be shuffled into the adv
 
 - Musket: 8 shots, combat modifier +1. 50% to inflict 1 damage to player upon use
 
-- Bombs: 3 bombs. Combat modifier +1, can kill groups of enemies in one go
+- Bombs: 3 bombs. Combat modifier +1, can kill groups of enemies in one go. 50% chance take 1 damage
 
 - Sling: 15 stones. Combat modifier -3
+
+- Crossbow: 6 bolts. Combat modifier +1. Can only be used once per combat
 
 #### Unique Items
 
 These items are granted for defeating their respective unique monster
 
-- World Slayer: A weapon which gives +4 combat value but drains 1 hp upon winning combat
+- World Slayer: A weapon which gives +5 combat value but drains 1 hp upon winning combat
 
 - Demonic Eye: A charm which allows player to pick 2 items from each merchant instead of 1
 
@@ -170,7 +172,7 @@ Spells all have a good and bad effect, each happening with a 50% chance
 
 - Fury: (+2 to combat roll and ignore damage for 5 turns) or (permanent -2 to max health)
 
-- Beautious wings: (permanent +2 to agility) or ()
+- Beautious wings: (permanent +2 to agility) or (current health is halved)
 
 ### Traps
 
