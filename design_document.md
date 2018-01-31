@@ -87,7 +87,8 @@ A random list of ideas for encounters throughout the game. Some may be used, som
     third penalty: 5 damage, permanent -2 to agility
 
 - The Spectre (Unique):
-    combat value: 11
+    Gets shuffled into the next deck after the encounter, or the current deck if the player is on the last deck
+    combat value: 11
     first penalty: 1 damage
     second penalty: 2 damage
     third penalty: death
@@ -123,6 +124,16 @@ Player starts with 1 or 2 items. A few other items will be shuffled into the adv
 
 - Broad sword: +2 to combat roll while equipped
 
+- Dagger: +1 to combat roll while equipped
+
+- Berserker flail: +3 to combat roll but received damage is doubled
+
+- Ethereal blade: +1 to combat damage. Upon being lost or discarded, immediately returns to the players inventory (if equipped)
+
+- Flaming sword: extra d3 to combat roll. Value is doubled against slimes
+
+- Bull whip: +1 to combat roll and +2 to agility while equipped
+
 #### Ranged Weapons
 
 - Sun wand: Fires a beam of concentrated energy. Ranged weapon, 3 uses. Combat value +2. Can damage slimes
@@ -131,7 +142,11 @@ Player starts with 1 or 2 items. A few other items will be shuffled into the adv
 
 - Long bow: Ranged weapon. 6 arrows, no combat modifier
 
-- Musket: 10 shots, combat modifier +1. 50% to inflict 1 damage to player upon use
+- Musket: 8 shots, combat modifier +1. 50% to inflict 1 damage to player upon use
+
+- Bombs: 3 bombs. Combat modifier +1, can kill groups of enemies in one go
+
+- Sling: 15 stones. Combat modifier -3
 
 #### Unique Items
 
@@ -143,7 +158,7 @@ These items are granted for defeating their respective unique monster
 
 - Spear of Osiris: Weapon. While equipped, player regens 1 hp every time he wins a fight, and cannot die; upon death the player will resurrect with 30% max hp and the spear will be destroyed
 
-- Tentacle of Shklah'lu: ?
+- Tentacle of Shklah'lu: +1 to agility. Player may use agility instead of combat roll in combat
 
 ### Spells
 
